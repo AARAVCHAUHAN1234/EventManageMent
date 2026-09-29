@@ -142,9 +142,11 @@ export function Home() {
         </div>
 
         {upcomingEvents.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="upcoming-masonry-grid">
             {upcomingEvents.map((evt) => (
-              <EventCard key={evt.id} event={evt} />
+              <div key={evt.id} className="card-animation-layer">
+                <EventCard event={evt} />
+              </div>
             ))}
           </div>
         ) : (

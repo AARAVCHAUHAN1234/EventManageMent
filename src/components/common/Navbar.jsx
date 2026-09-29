@@ -38,39 +38,39 @@ export function Navbar() {
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1 lg:gap-2">
-            {navLinks.map((link) => {
-              const isHash = link.path.includes('#');
-              if (isHash) {
-                return (
-                  <a
-                    key={link.name}
-                    href={link.path}
-                    className="px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition-colors"
-                  >
-                    {link.name}
-                  </a>
-                );
-              }
-              return (
-                <NavLink
-                  key={link.name}
-                  to={link.path}
-                  end={link.path === '/'}
-                  className={({ isActive }) =>
-                    `px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                      isActive
-                        ? 'text-indigo-600 bg-indigo-50/80 font-semibold shadow-xs'
-                        : 'text-slate-600 hover:text-indigo-600 hover:bg-slate-50'
-                    }`
+          {/* Desktop Navigation with Floating Pill Indicator Effect */}
+          <div className="hidden md:block">
+            <div className="nav-pill-wrapper">
+              <nav className="nav-pill-container">
+                {navLinks.map((link) => {
+                  const isHash = link.path.includes('#');
+                  if (isHash) {
+                    return (
+                      <a
+                        key={link.name}
+                        href={link.path}
+                        className="transition-colors"
+                      >
+                        {link.name}
+                      </a>
+                    );
                   }
-                >
-                  {link.name}
-                </NavLink>
-              );
-            })}
-          </nav>
+                  return (
+                    <NavLink
+                      key={link.name}
+                      to={link.path}
+                      end={link.path === '/'}
+                      className={({ isActive }) =>
+                        `transition-all ${isActive ? 'active-link' : ''}`
+                      }
+                    >
+                      {link.name}
+                    </NavLink>
+                  );
+                })}
+              </nav>
+            </div>
+          </div>
 
           {/* Right Action: Admin Portal CTA */}
           <div className="hidden md:flex items-center gap-3">

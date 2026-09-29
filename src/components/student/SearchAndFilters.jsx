@@ -37,23 +37,23 @@ export function SearchAndFilters({
   };
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200/80 p-4 sm:p-6 shadow-sm space-y-4">
+    <div className="bg-[#141414] rounded-2xl border border-white/10 p-4 sm:p-6 shadow-xl space-y-4 vintage-noise">
       {/* Top row: Search input and Status selector */}
       <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
         {/* Search input */}
         <div className="relative flex-1">
-          <Search className="w-5 h-5 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+          <Search className="w-4 h-4 text-[#A69E8C] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
             placeholder="Search events by name, topic, or keyword..."
-            className="w-full pl-11 pr-10 py-2.5 rounded-xl border border-slate-200 bg-slate-50/50 text-slate-900 placeholder:text-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
+            className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-white/10 bg-[#1c1c1c] text-[#F6F3EC] placeholder:text-[#A69E8C]/60 text-xs sm:text-sm focus:outline-none focus:ring-1 focus:ring-[#ECE5D8] focus:border-[#ECE5D8] transition-all font-sans"
           />
           {searchQuery && (
             <button
               onClick={() => onSearchChange('')}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1 rounded-full focus:outline-none"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-[#A69E8C] hover:text-white p-1 rounded-full focus:outline-none transition-colors"
               aria-label="Clear search query"
             >
               <X className="w-4 h-4" />
@@ -63,17 +63,17 @@ export function SearchAndFilters({
 
         {/* Status Dropdown */}
         <div className="flex items-center gap-2">
-          <label htmlFor="status-filter" className="text-xs font-semibold text-slate-500 whitespace-nowrap">
+          <label htmlFor="status-filter" className="text-[11px] font-mono uppercase tracking-widest text-[#A69E8C] whitespace-nowrap">
             Status:
           </label>
           <select
             id="status-filter"
             value={selectedStatus}
             onChange={(e) => onStatusChange(e.target.value)}
-            className="px-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50/50 text-slate-800 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all cursor-pointer"
+            className="px-3.5 py-2.5 rounded-xl border border-white/10 bg-[#1c1c1c] text-[#F6F3EC] text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-[#ECE5D8] focus:border-[#ECE5D8] transition-all cursor-pointer"
           >
             {STATUS_OPTIONS.map((opt) => (
-              <option key={opt.value} value={opt.value}>
+              <option key={opt.value} value={opt.value} className="bg-[#181818] text-[#F6F3EC]">
                 {opt.label}
               </option>
             ))}
@@ -82,17 +82,17 @@ export function SearchAndFilters({
       </div>
 
       {/* Category Pills horizontal scrollable */}
-      <div className="pt-2 border-t border-slate-100">
-        <div className="flex items-center justify-between gap-2 mb-2">
-          <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
-            Filter by Category:
+      <div className="pt-3 border-t border-white/5">
+        <div className="flex items-center justify-between gap-2 mb-2.5">
+          <span className="text-[11px] font-mono uppercase tracking-widest text-[#A69E8C]">
+            [ CATEGORY FILTER ]
           </span>
           {hasActiveFilters && (
             <button
               onClick={handleClearFilters}
-              className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 hover:underline flex items-center gap-1"
+              className="text-[11px] font-mono uppercase tracking-wider text-[#ECE5D8] hover:text-white hover:underline flex items-center gap-1 transition-colors"
             >
-              <X className="w-3.5 h-3.5" />
+              <X className="w-3 h-3" />
               Reset Filters
             </button>
           )}
@@ -105,10 +105,10 @@ export function SearchAndFilters({
               <button
                 key={cat}
                 onClick={() => onCategoryChange(cat)}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all ${
+                className={`px-3.5 py-1.5 rounded-lg text-xs font-mono tracking-wide uppercase transition-all ${
                   isSelected
-                    ? 'bg-indigo-600 text-white shadow-sm shadow-indigo-500/30'
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900'
+                    ? 'bg-[#F6F3EC] text-[#141414] font-bold shadow-md shadow-white/10'
+                    : 'bg-[#1c1c1c] text-[#A69E8C] border border-white/10 hover:border-white/20 hover:text-[#F6F3EC] hover:bg-[#222222]'
                 }`}
               >
                 {cat}
@@ -119,12 +119,12 @@ export function SearchAndFilters({
       </div>
 
       {/* Results counter */}
-      <div className="flex items-center justify-between text-xs text-slate-500 pt-1">
+      <div className="flex items-center justify-between text-[11px] font-mono text-[#A69E8C] pt-1">
         <span>
-          Showing <span className="font-semibold text-slate-800">{totalResults}</span> {totalResults === 1 ? 'event' : 'events'}
+          Showing <span className="font-bold text-[#F6F3EC]">{totalResults}</span> {totalResults === 1 ? 'event record' : 'event records'}
         </span>
         {hasActiveFilters && (
-          <span className="text-indigo-600 font-medium">Filtered view</span>
+          <span className="text-[#ECE5D8] font-mono tracking-wider">[ FILTERED VIEW ]</span>
         )}
       </div>
     </div>

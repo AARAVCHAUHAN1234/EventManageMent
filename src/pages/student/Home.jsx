@@ -16,6 +16,7 @@ import {
   ShieldCheck,
 } from 'lucide-react';
 import { useEvents } from '../../context/EventContext';
+import { HeroEditorial } from '../../components/student/HeroEditorial';
 import { EventCard } from '../../components/student/EventCard';
 import { FeaturedEvent } from '../../components/student/FeaturedEvent';
 import { EventTimeline } from '../../components/student/EventTimeline';
@@ -41,69 +42,11 @@ export function Home() {
   const totalRegistrations = registrations.length;
 
   return (
-    <div className="space-y-16 sm:space-y-24 pb-20 overflow-x-hidden">
+    <div className="space-y-16 sm:space-y-24 pb-20 overflow-x-hidden bg-[#0c0c0c] text-[#F6F3EC]">
       {/* =========================================================================
-          HERO SECTION
+          EDITORIAL BRUTALIST HERO SECTION
       ========================================================================= */}
-      <section className="relative pt-8 sm:pt-14 pb-12 sm:pb-20 overflow-hidden">
-        {/* Soft background glow accents */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gradient-to-tr from-indigo-500/15 via-purple-500/15 to-transparent rounded-full blur-3xl pointer-events-none" />
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center max-w-3xl mx-auto space-y-6">
-            {/* Pill badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-50 border border-indigo-200/80 text-indigo-700 text-xs font-semibold shadow-xs">
-              <Sparkles className="w-3.5 h-3.5 text-indigo-600" />
-              <span>Official Student Community & Event Platform</span>
-            </div>
-
-            {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.15]">
-              Where <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-700 bg-clip-text text-transparent">Ideas Meet</span> Opportunity
-            </h1>
-
-            {/* Subtitle */}
-            <p className="text-slate-600 text-base sm:text-lg sm:leading-relaxed max-w-2xl mx-auto">
-              Discover cutting-edge hackathons, master coding workshops, network with inspiring alumni founders, and take your university journey beyond the classroom.
-            </p>
-
-            {/* CTAs */}
-            <div className="flex flex-wrap items-center justify-center gap-3.5 pt-2">
-              <Link
-                to="/events"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm sm:text-base shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:-translate-y-0.5 active:translate-y-0 transition-all"
-              >
-                <span>Explore All Events</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-
-              <a
-                href="#about"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-900 font-semibold text-sm sm:text-base border border-slate-200 shadow-sm transition-all"
-              >
-                <span>Learn About Us</span>
-                <Compass className="w-4 h-4 text-slate-400" />
-              </a>
-            </div>
-
-            {/* Quick social proof / badges */}
-            <div className="pt-6 flex items-center justify-center gap-6 sm:gap-10 text-xs text-slate-500 font-medium">
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                <span>Instant Registration</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                <span>Digital Entry Passes</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                <span>Certified Participation</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroEditorial />
 
       {/* =========================================================================
           FEATURED EVENT SHOWCASE
@@ -120,23 +63,23 @@ export function Home() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
           <div>
-            <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-indigo-600 mb-1">
+            <div className="inline-flex items-center gap-1.5 font-mono text-[11px] font-bold uppercase tracking-wider text-[#E5DEC9] mb-1">
               <Calendar className="w-3.5 h-3.5" />
               <span>Mark Your Calendar</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-[#F6F3EC] tracking-tight">
               Upcoming Club Events
             </h2>
-            <p className="text-slate-500 text-xs sm:text-sm mt-1">
+            <p className="text-[#A69E8C] font-sans text-xs sm:text-sm mt-1 font-light">
               Handpicked workshops, competitions, and seminars scheduled for this semester.
             </p>
           </div>
 
           <Link
             to="/events"
-            className="inline-flex items-center gap-1 text-sm font-semibold text-indigo-600 hover:text-indigo-800 transition-colors group"
+            className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-[#E5DEC9] hover:text-white transition-colors group"
           >
-            <span>View All ({events.length})</span>
+            <span>View All Catalog ({events.length})</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
@@ -150,15 +93,15 @@ export function Home() {
             ))}
           </div>
         ) : (
-          <div className="bg-white rounded-3xl border border-slate-200/80 p-12 text-center max-w-lg mx-auto space-y-3">
-            <Calendar className="w-12 h-12 text-slate-300 mx-auto" />
-            <h3 className="font-bold text-lg text-slate-800">No Upcoming Events</h3>
-            <p className="text-xs text-slate-500">
-              New club events will be announced soon. Check back or view past events in the catalog.
+          <div className="bg-[#141414] rounded-3xl border border-white/10 p-12 text-center max-w-lg mx-auto space-y-3">
+            <Calendar className="w-12 h-12 text-stone-600 mx-auto" />
+            <h3 className="font-serif font-normal text-lg text-[#F6F3EC]">No Upcoming Events</h3>
+            <p className="text-xs text-[#A69E8C] font-sans">
+              New club events will be announced soon. Check back or view past events in the archive.
             </p>
             <Link
               to="/events"
-              className="inline-flex px-4 py-2 text-xs font-semibold text-indigo-600 bg-indigo-50 rounded-xl hover:bg-indigo-100"
+              className="inline-flex px-4 py-2 font-mono text-xs font-bold uppercase tracking-wider text-[#141414] bg-[#F6F3EC] rounded-xl hover:bg-white"
             >
               Browse Event Archive
             </Link>
@@ -169,42 +112,42 @@ export function Home() {
       {/* =========================================================================
           CLUB INTRODUCTION & MISSION (ABOUT SECTION)
       ========================================================================= */}
-      <section id="about" className="bg-gradient-to-b from-white to-slate-50 border-y border-slate-200/70 py-16 sm:py-24">
+      <section id="about" className="bg-[#121212] border-y border-white/10 py-16 sm:py-24 vintage-noise">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Col: Story & Pillars */}
             <div className="space-y-6">
-              <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-indigo-600">
+              <div className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider text-[#E5DEC9]">
                 <Rocket className="w-4 h-4" />
                 <span>About Our College Club</span>
               </div>
 
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-[#F6F3EC] tracking-tight leading-[1.1]">
                 Empowering the next generation of builders, thinkers, and leaders.
               </h2>
 
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+              <p className="font-sans text-[#B8B1A2] text-sm sm:text-base leading-relaxed font-light">
                 Founded by passionate students and faculty mentors, NexClub is our college's premier hub for technology, design, innovation, and cultural activities. We provide students with the stage to experiment, build real-world products, and collaborate across departments.
               </p>
 
               {/* Mission & Vision Cards */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                <div className="p-5 rounded-2xl bg-white border border-slate-200/80 shadow-xs space-y-2">
-                  <div className="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold">
-                    <Target className="w-5 h-5" />
+                <div className="p-5 rounded-2xl bg-[#181818] border border-white/10 shadow-xs space-y-2 hover:border-white/20 transition-all">
+                  <div className="w-8 h-8 rounded-xl bg-white/10 text-[#E5DEC9] flex items-center justify-center font-bold">
+                    <Target className="w-4 h-4" />
                   </div>
-                  <h3 className="font-bold text-sm text-slate-900">Our Mission</h3>
-                  <p className="text-xs text-slate-500 leading-relaxed">
+                  <h3 className="font-serif text-base text-[#F6F3EC]">Our Mission</h3>
+                  <p className="text-xs text-[#A69E8C] font-sans font-light leading-relaxed">
                     Bridge academia with practical industry engineering through accessible peer-led workshops and competitions.
                   </p>
                 </div>
 
-                <div className="p-5 rounded-2xl bg-white border border-slate-200/80 shadow-xs space-y-2">
-                  <div className="w-9 h-9 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center font-bold">
-                    <Zap className="w-5 h-5" />
+                <div className="p-5 rounded-2xl bg-[#181818] border border-white/10 shadow-xs space-y-2 hover:border-white/20 transition-all">
+                  <div className="w-8 h-8 rounded-xl bg-white/10 text-[#E5DEC9] flex items-center justify-center font-bold">
+                    <Zap className="w-4 h-4" />
                   </div>
-                  <h3 className="font-bold text-sm text-slate-900">Our Vision</h3>
-                  <p className="text-xs text-slate-500 leading-relaxed">
+                  <h3 className="font-serif text-base text-[#F6F3EC]">Our Vision</h3>
+                  <p className="text-xs text-[#A69E8C] font-sans font-light leading-relaxed">
                     Cultivate a thriving campus ecosystem where every curious student can transform ideas into impactful ventures.
                   </p>
                 </div>
@@ -212,40 +155,40 @@ export function Home() {
             </div>
 
             {/* Right Col: Activities Grid with high visual appeal */}
-            <div className="bg-slate-900 rounded-3xl p-6 sm:p-8 text-white space-y-6 shadow-xl border border-slate-800">
-              <h3 className="font-extrabold text-xl tracking-tight text-white flex items-center gap-2">
-                <Sparkles className="w-5 h-5 text-indigo-400" />
+            <div className="bg-[#161616] rounded-3xl p-6 sm:p-8 text-[#F6F3EC] space-y-6 shadow-xl border border-white/10">
+              <h3 className="font-serif text-xl tracking-tight text-[#F6F3EC] flex items-center gap-2">
+                <Sparkles className="w-5 h-5 text-[#E5DEC9]" />
                 What We Do Throughout The Year
               </h3>
 
               <div className="space-y-4 text-sm">
-                <div className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-slate-800/70 border border-slate-700/60">
-                  <div className="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <div className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-[#1d1d1d] border border-white/5 hover:border-white/15 transition-all">
+                  <div className="w-8 h-8 rounded-lg bg-white/10 text-[#E5DEC9] flex items-center justify-center flex-shrink-0 mt-0.5">
                     <Award className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-100 text-xs sm:text-sm">National & Campus Hackathons</h4>
-                    <p className="text-xs text-slate-400 mt-0.5">36-hour buildathons with industry mentors, prizes, and recruitments.</p>
+                    <h4 className="font-serif text-sm text-[#F6F3EC]">National & Campus Hackathons</h4>
+                    <p className="text-xs text-[#A69E8C] font-sans font-light mt-0.5">36-hour buildathons with industry mentors, prizes, and recruitments.</p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-slate-800/70 border border-slate-700/60">
-                  <div className="w-8 h-8 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <div className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-[#1d1d1d] border border-white/5 hover:border-white/15 transition-all">
+                  <div className="w-8 h-8 rounded-lg bg-white/10 text-[#E5DEC9] flex items-center justify-center flex-shrink-0 mt-0.5">
                     <BookOpen className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-100 text-xs sm:text-sm">Technical Masterclasses</h4>
-                    <p className="text-xs text-slate-400 mt-0.5">Hands-on tutorials on Web3, React, Cloud, AI/ML, and Cybersecurity.</p>
+                    <h4 className="font-serif text-sm text-[#F6F3EC]">Technical Masterclasses</h4>
+                    <p className="text-xs text-[#A69E8C] font-sans font-light mt-0.5">Hands-on tutorials on Web3, React, Cloud, AI/ML, and Cybersecurity.</p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-slate-800/70 border border-slate-700/60">
-                  <div className="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <div className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-[#1d1d1d] border border-white/5 hover:border-white/15 transition-all">
+                  <div className="w-8 h-8 rounded-lg bg-white/10 text-[#E5DEC9] flex items-center justify-center flex-shrink-0 mt-0.5">
                     <Users className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-100 text-xs sm:text-sm">Alumni & Founder Talks</h4>
-                    <p className="text-xs text-slate-400 mt-0.5">Direct insights on startup fundraising, internships, and career roadmaps.</p>
+                    <h4 className="font-serif text-sm text-[#F6F3EC]">Alumni & Founder Talks</h4>
+                    <p className="text-xs text-[#A69E8C] font-sans font-light mt-0.5">Direct insights on startup fundraising, internships, and career roadmaps.</p>
                   </div>
                 </div>
               </div>
@@ -255,45 +198,45 @@ export function Home() {
           {/* =========================================================================
               CLUB STATS BAR (Dynamic Values)
           ========================================================================= */}
-          <div id="stats" className="pt-8 border-t border-slate-200/80">
-            <div className="text-center max-w-xl mx-auto mb-8">
-              <h3 className="text-lg font-bold text-slate-900">Club Impact in Numbers</h3>
-              <p className="text-xs text-slate-500">Live statistics generated dynamically from active events and registrations.</p>
+          <div id="stats" className="pt-8 border-t border-white/10">
+            <div className="text-center max-w-xl mx-auto mb-8 font-mono">
+              <h3 className="text-sm font-bold uppercase tracking-widest text-[#E5DEC9]">[CLUB IMPACT IN NUMBERS]</h3>
+              <p className="text-xs text-[#A69E8C] mt-1 font-sans font-light">Live statistics generated dynamically from active events and registrations.</p>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-              <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs text-center">
-                <p className="text-3xl sm:text-4xl font-extrabold text-indigo-600 tracking-tight">
+              <div className="bg-[#141414] p-6 rounded-2xl border border-white/10 shadow-xs text-center hover:border-white/20 transition-all">
+                <p className="font-serif text-3xl sm:text-4xl font-normal text-[#F6F3EC] tracking-tight">
                   {500 + totalRegistrations}+
                 </p>
-                <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-1">
+                <p className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#A69E8C] mt-1">
                   Active Members
                 </p>
               </div>
 
-              <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs text-center">
-                <p className="text-3xl sm:text-4xl font-extrabold text-purple-600 tracking-tight">
+              <div className="bg-[#141414] p-6 rounded-2xl border border-white/10 shadow-xs text-center hover:border-white/20 transition-all">
+                <p className="font-serif text-3xl sm:text-4xl font-normal text-[#F6F3EC] tracking-tight">
                   {totalOrganized}
                 </p>
-                <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-1">
+                <p className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#A69E8C] mt-1">
                   Events Organized
                 </p>
               </div>
 
-              <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs text-center">
-                <p className="text-3xl sm:text-4xl font-extrabold text-emerald-600 tracking-tight">
+              <div className="bg-[#141414] p-6 rounded-2xl border border-white/10 shadow-xs text-center hover:border-white/20 transition-all">
+                <p className="font-serif text-3xl sm:text-4xl font-normal text-[#F6F3EC] tracking-tight">
                   {totalWorkshops > 0 ? totalWorkshops : 12}+
                 </p>
-                <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-1">
+                <p className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#A69E8C] mt-1">
                   Hands-on Workshops
                 </p>
               </div>
 
-              <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs text-center">
-                <p className="text-3xl sm:text-4xl font-extrabold text-amber-600 tracking-tight">
+              <div className="bg-[#141414] p-6 rounded-2xl border border-white/10 shadow-xs text-center hover:border-white/20 transition-all">
+                <p className="font-serif text-3xl sm:text-4xl font-normal text-[#F6F3EC] tracking-tight">
                   6+
                 </p>
-                <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-1">
+                <p className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#A69E8C] mt-1">
                   Years Active
                 </p>
               </div>
@@ -311,26 +254,26 @@ export function Home() {
           CONTACT & CTA BANNER
       ========================================================================= */}
       <section id="contact" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-gradient-to-r from-indigo-900 via-indigo-800 to-purple-900 rounded-3xl p-8 sm:p-12 text-white text-center space-y-6 shadow-xl relative overflow-hidden">
+        <div className="bg-[#141414] border border-white/15 rounded-3xl p-8 sm:p-12 text-[#F6F3EC] text-center space-y-6 shadow-2xl relative overflow-hidden vintage-noise">
           <div className="relative z-10 max-w-2xl mx-auto space-y-4">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            <h2 className="font-serif text-3xl sm:text-4xl font-normal text-[#F6F3EC] tracking-tight">
               Ready to Showcase Your Skills or Join the Team?
             </h2>
-            <p className="text-indigo-200 text-xs sm:text-sm">
+            <p className="text-[#C5BFAe] font-sans text-xs sm:text-sm font-light">
               Whether you want to participate in our upcoming events or volunteer as an event coordinator, we would love to have you.
             </p>
-            <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
+            <div className="pt-2 flex flex-wrap items-center justify-center gap-4 font-mono text-xs uppercase tracking-wider">
               <Link
                 to="/events"
-                className="px-6 py-3 rounded-xl bg-white text-indigo-900 font-bold text-sm shadow-md hover:bg-slate-100 transition-colors"
+                className="px-6 py-3 rounded-xl bg-[#F6F3EC] text-[#141414] font-bold shadow-md hover:bg-white hover:scale-105 transition-all"
               >
                 Browse All Events
               </Link>
               <a
                 href="mailto:contact@collegeclub.edu"
-                className="px-6 py-3 rounded-xl bg-indigo-700/60 hover:bg-indigo-700 text-white font-semibold text-sm border border-indigo-400/30 transition-colors"
+                className="px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-[#E5DEC9] font-medium border border-white/20 transition-all"
               >
-                Contact Organizers
+                Contact Organizers &rarr;
               </a>
             </div>
           </div>

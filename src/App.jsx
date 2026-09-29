@@ -39,9 +39,9 @@ function ScrollToTop() {
 // Layout wrapper for student facing pages
 function StudentLayout({ children }) {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-[#0c0c0c] text-[#F6F3EC]">
       <Navbar />
-      <main className="flex-1">{children}</main>
+      <main className="flex-1 bg-[#0c0c0c]">{children}</main>
       <Footer />
     </div>
   );

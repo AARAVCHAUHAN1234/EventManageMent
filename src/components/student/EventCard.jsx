@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar, Clock, MapPin, ArrowRight, Bookmark, Sparkles, Users } from 'lucide-react';
 import { CategoryBadge, StatusBadge } from '../common/Badge';
-import { CapacityBar } from '../common/CapacityBar';
 import { formatDate, getEventStatus, isDatePassed } from '../../utils/dateUtils';
 import { useEvents } from '../../context/EventContext';
 import { useToast } from '../../context/ToastContext';
@@ -34,56 +33,56 @@ export function EventCard({ event }) {
   };
 
   return (
-    <div className="event-shadow-card group p-6 sm:p-7">
+    <div className="event-shadow-card group p-6 sm:p-7 transition-all duration-300">
       {/* Front Card Content */}
-      <div className="relative z-10 flex-1 flex flex-col justify-between space-y-6 text-white">
+      <div className="relative z-10 flex-1 flex flex-col justify-between space-y-6 text-[#F6F3EC]">
         {/* Top Header: Category, Date, Status */}
         <div className="flex items-start justify-between gap-3">
           <div className="space-y-1.5">
             <div className="flex items-center gap-2 flex-wrap">
-              <CategoryBadge category={event.category} className="bg-white/20 text-white border-white/30 backdrop-blur-md text-[11px]" />
+              <CategoryBadge category={event.category} className="bg-black/50 text-[#E5DEC9] border-white/20 backdrop-blur-md text-[10px] font-mono uppercase tracking-wider" />
               {event.isFeatured && (
-                <span className="px-2 py-0.5 rounded-full bg-amber-500/90 text-white text-[10px] font-extrabold uppercase tracking-wider shadow-sm flex items-center gap-1 backdrop-blur-md">
+                <span className="px-2 py-0.5 rounded-full bg-[#E5DEC9] text-[#141414] text-[10px] font-mono font-bold uppercase tracking-wider shadow-sm flex items-center gap-1 backdrop-blur-md">
                   <Sparkles className="w-3 h-3" />
                   Featured
                 </span>
               )}
             </div>
-            <p className="text-xs text-slate-300 font-medium flex items-center gap-1.5 pt-0.5">
-              <MapPin className="w-3.5 h-3.5 text-indigo-400 flex-shrink-0" />
+            <p className="text-xs text-[#A69E8C] font-mono flex items-center gap-1.5 pt-0.5">
+              <MapPin className="w-3.5 h-3.5 text-[#E5DEC9] flex-shrink-0" />
               <span className="truncate max-w-[170px]">{event.venue}</span>
             </p>
           </div>
 
           <div className="text-right space-y-1">
-            <div className="text-xs font-bold text-slate-200 bg-black/40 px-2.5 py-1 rounded-lg backdrop-blur-md border border-white/10 flex items-center gap-1.5">
-              <Calendar className="w-3.5 h-3.5 text-indigo-300" />
+            <div className="text-xs font-mono font-bold text-[#F6F3EC] bg-black/60 px-2.5 py-1 rounded-lg backdrop-blur-md border border-white/15 flex items-center gap-1.5 shadow-sm">
+              <Calendar className="w-3.5 h-3.5 text-[#E5DEC9]" />
               <span>{formatDate(event.date)}</span>
             </div>
-            <StatusBadge status={status} className="bg-black/30 text-white border-white/20 text-[10px]" />
+            <StatusBadge status={status} className="bg-black/40 text-[#C5BFAe] border-white/15 text-[10px] font-mono" />
           </div>
         </div>
 
         {/* Bottom Section: Title, Description, Capacity, Actions */}
         <div className="space-y-4">
           <div className="flex items-start justify-between gap-3">
-            <div className="space-y-1 flex-1">
-              <h3 className="font-extrabold text-xl sm:text-2xl text-white tracking-tight leading-snug group-hover:text-indigo-200 transition-colors line-clamp-2">
+            <div className="space-y-1.5 flex-1">
+              <h3 className="font-serif text-xl sm:text-2xl text-[#F6F3EC] tracking-tight leading-snug group-hover:text-white transition-colors line-clamp-2">
                 {event.title}
               </h3>
-              <p className="text-xs sm:text-sm text-slate-300 line-clamp-2 leading-relaxed">
+              <p className="text-xs sm:text-sm text-[#B8B1A2] line-clamp-2 leading-relaxed font-sans font-light">
                 {event.shortDescription || event.description}
               </p>
             </div>
 
-            {/* Bookmark SVG Action Button */}
+            {/* Bookmark Action Button */}
             <button
               type="button"
               onClick={handleBookmarkToggle}
-              className={`w-10 h-10 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
+              className={`w-10 h-10 rounded-full border flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
                 isBookmarked
-                  ? 'bg-amber-400 border-amber-300 text-slate-950 shadow-lg shadow-amber-400/30 scale-105'
-                  : 'bg-white/10 border-white/40 text-white hover:bg-white/30 hover:scale-110 backdrop-blur-md'
+                  ? 'bg-[#E5DEC9] border-[#E5DEC9] text-[#141414] shadow-lg scale-105'
+                  : 'bg-black/40 border-white/20 text-[#E5DEC9] hover:bg-white/20 hover:text-white hover:scale-110 active:scale-95 backdrop-blur-md'
               }`}
               title={isBookmarked ? 'Bookmarked' : 'Save Event'}
               aria-label="Bookmark Event"
@@ -93,37 +92,37 @@ export function EventCard({ event }) {
           </div>
 
           {/* Timing and Capacity Meter */}
-          <div className="p-3 bg-black/40 backdrop-blur-md rounded-xl border border-white/10 space-y-2">
-            <div className="flex items-center justify-between text-xs text-slate-300">
+          <div className="p-3 bg-black/60 backdrop-blur-md rounded-xl border border-white/10 space-y-2 font-mono">
+            <div className="flex items-center justify-between text-[11px] text-[#A69E8C]">
               <span className="flex items-center gap-1.5">
-                <Clock className="w-3.5 h-3.5 text-indigo-400" />
+                <Clock className="w-3.5 h-3.5 text-[#E5DEC9]" />
                 {event.time}
               </span>
-              <span className="font-semibold text-slate-200">
-                {capacity.count} / {capacity.max} spots
+              <span className="font-semibold text-[#F6F3EC]">
+                {capacity.count} / {capacity.max} SPOTS
               </span>
             </div>
-            <div className="w-full h-1.5 bg-white/20 rounded-full overflow-hidden">
+            <div className="w-full h-1.5 bg-white/15 rounded-full overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full transition-all duration-500"
+                className="h-full bg-gradient-to-r from-[#E5DEC9] to-white rounded-full transition-all duration-500"
                 style={{ width: `${capacity.percentage}%` }}
               />
             </div>
           </div>
 
           {/* Action Buttons Row */}
-          <div className="grid grid-cols-2 gap-2 pt-1">
+          <div className="grid grid-cols-2 gap-2 pt-1 font-mono text-xs">
             <Link
               to={`/events/${event.id}`}
-              className="w-full inline-flex items-center justify-center px-3.5 py-2.5 rounded-xl text-xs font-semibold text-white bg-white/15 hover:bg-white/25 border border-white/20 backdrop-blur-md transition-all text-center"
+              className="w-full inline-flex items-center justify-center px-3.5 py-2.5 rounded-xl uppercase tracking-wider text-[#E5DEC9] bg-white/10 hover:bg-white/20 hover:text-white border border-white/15 backdrop-blur-md transition-all text-center"
             >
-              View Details
+              Details
             </Link>
 
             {canRegister ? (
               <Link
                 to={`/register/${event.id}`}
-                className="w-full inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-xl text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-500 shadow-md shadow-indigo-600/40 hover:shadow-indigo-600/60 transition-all text-center"
+                className="w-full inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-xl uppercase tracking-wider font-bold text-[#141414] bg-[#F6F3EC] hover:bg-white shadow-md hover:scale-[1.02] active:scale-98 transition-all text-center"
               >
                 <span>Register</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -131,16 +130,16 @@ export function EventCard({ event }) {
             ) : (
               <button
                 disabled
-                className="w-full inline-flex items-center justify-center px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-400 bg-white/10 cursor-not-allowed border border-white/10"
+                className="w-full inline-flex items-center justify-center px-3.5 py-2.5 rounded-xl uppercase tracking-wider font-medium text-stone-500 bg-white/5 cursor-not-allowed border border-white/10"
               >
-                {isPast ? 'Concluded' : deadlinePassed ? 'Closed' : 'Full'}
+                {isPast ? 'Closed' : deadlinePassed ? 'Expired' : 'Full'}
               </button>
             )}
           </div>
         </div>
       </div>
 
-      {/* Card Background Image with Gradient Overlay */}
+      {/* Card Background Image with Editorial Scrim Overlay */}
       <div className="card-bg">
         <img
           src={imgSrc}
@@ -149,7 +148,7 @@ export function EventCard({ event }) {
           className="bg-img"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/70 to-slate-950/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c0c]/98 via-[#0c0c0c]/75 to-[#0c0c0c]/45" />
       </div>
 
       {/* Ambient Blurred Shadow Image Glow Effect */}

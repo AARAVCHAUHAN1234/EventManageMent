@@ -67,14 +67,14 @@ export function Events() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-8">
       {/* Header section */}
       <div className="text-center max-w-2xl mx-auto space-y-3">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-bold uppercase tracking-wider">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#181818] border border-white/10 text-[#ECE5D8] text-[11px] font-mono uppercase tracking-widest">
           <Calendar className="w-3.5 h-3.5" />
-          <span>Explore All Activities</span>
+          <span>Event Directory // 2026</span>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-          College Events & Workshops
+        <h1 className="text-3xl sm:text-5xl font-serif font-bold text-[#F6F3EC] tracking-tight">
+          Campus Events & Masterclasses
         </h1>
-        <p className="text-slate-500 text-sm sm:text-base">
+        <p className="text-[#A69E8C] text-sm sm:text-base font-sans font-light">
           Find hackathons, coding bootcamps, technical seminars, cultural nights, and sports meets.
         </p>
       </div>
@@ -101,13 +101,13 @@ export function Events() {
         </div>
       ) : (
         /* Empty State */
-        <div className="bg-white rounded-3xl border border-slate-200 p-12 text-center max-w-lg mx-auto space-y-4 shadow-sm">
-          <div className="w-16 h-16 bg-slate-100 text-slate-400 rounded-2xl flex items-center justify-center mx-auto">
+        <div className="bg-[#141414] rounded-3xl border border-white/10 p-12 text-center max-w-lg mx-auto space-y-5 shadow-2xl vintage-noise">
+          <div className="w-16 h-16 bg-[#1f1f1f] text-[#A69E8C] rounded-2xl flex items-center justify-center mx-auto border border-white/10">
             <XCircle className="w-8 h-8" />
           </div>
           <div>
-            <h3 className="font-bold text-lg text-slate-800">No matching events found</h3>
-            <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+            <h3 className="font-serif font-bold text-xl text-[#F6F3EC]">No matching events found</h3>
+            <p className="text-xs text-[#A69E8C] mt-2 leading-relaxed font-sans">
               We couldn't find any events matching your selected criteria. Try adjusting your search keywords or resetting the active filters.
             </p>
           </div>
@@ -117,7 +117,7 @@ export function Events() {
               setSelectedCategory('All');
               setSelectedStatus('all');
             }}
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs transition-colors"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#F6F3EC] hover:bg-white text-[#141414] font-bold text-xs uppercase font-mono tracking-wider transition-all shadow-md"
           >
             <RefreshCw className="w-3.5 h-3.5" />
             <span>Reset All Filters</span>

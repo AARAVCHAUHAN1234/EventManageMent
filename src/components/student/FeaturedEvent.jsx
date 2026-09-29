@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Calendar, Clock, MapPin, Sparkles, ArrowRight, ShieldAlert, CheckCircle2 } from 'lucide-react';
+import { Calendar, Clock, MapPin, Sparkles, ArrowUpRight, ArrowRight } from 'lucide-react';
 import { CategoryBadge, StatusBadge } from '../common/Badge';
-import { CapacityBar } from '../common/CapacityBar';
 import { formatDate, getEventStatus, isDatePassed, getDaysRemaining } from '../../utils/dateUtils';
 import { useEvents } from '../../context/EventContext';
 
@@ -22,126 +21,122 @@ export function FeaturedEvent({ event }) {
   const canRegister = !isPast && !deadlinePassed && !capacity.isFull;
 
   return (
-    <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white shadow-2xl border border-indigo-500/20">
-      {/* Subtle background glow effect */}
-      <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center p-6 sm:p-8 lg:p-12">
+    <section className="relative overflow-hidden rounded-3xl bg-[#141414] text-[#F6F3EC] shadow-2xl border border-white/10 vintage-noise group transition-all duration-300 hover:border-white/20">
+      <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center p-6 sm:p-8 lg:p-12 z-10">
         {/* Left Col: Info */}
         <div className="lg:col-span-7 space-y-6">
           <div className="flex flex-wrap items-center gap-2.5">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/20 border border-amber-400/40 text-amber-300 text-xs font-bold uppercase tracking-wider">
-              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-              Featured Event of the Month
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E5DEC9] text-[#141414] font-mono text-[10px] font-bold uppercase tracking-wider shadow-sm">
+              <Sparkles className="w-3 h-3 text-[#141414]" />
+              Featured Highlight of the Term
             </span>
-            <CategoryBadge category={event.category} className="bg-white/10 text-white border-white/20" />
-            <StatusBadge status={status} className="bg-white/10 text-white border-white/20" />
+            <CategoryBadge category={event.category} className="bg-black/50 text-[#E5DEC9] border-white/20 text-[10px]" />
+            <StatusBadge status={status} className="bg-black/40 text-[#C5BFAe] border-white/15 text-[10px]" />
           </div>
 
           <div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-[#F6F3EC] tracking-tight leading-[1.05]">
               {event.title}
             </h2>
-            <p className="mt-3 text-slate-300 text-sm sm:text-base leading-relaxed line-clamp-3">
+            <p className="mt-3 font-sans text-[#B8B1A2] text-sm sm:text-base leading-relaxed line-clamp-3 font-light">
               {event.description || event.shortDescription}
             </p>
           </div>
 
           {/* Highlights grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2 border-t border-slate-800">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2 border-t border-white/10 font-mono">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-indigo-500/20 flex items-center justify-center text-indigo-400 border border-indigo-500/30">
-                <Calendar className="w-5 h-5" />
+              <div className="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-[#E5DEC9] border border-white/10">
+                <Calendar className="w-4 h-4" />
               </div>
               <div>
-                <p className="text-[11px] text-slate-400 uppercase font-semibold">Date</p>
-                <p className="text-sm font-bold text-white">{formatDate(event.date)}</p>
+                <p className="text-[10px] text-[#A69E8C] uppercase font-semibold">Date</p>
+                <p className="text-xs font-bold text-[#F6F3EC]">{formatDate(event.date)}</p>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-indigo-500/20 flex items-center justify-center text-indigo-400 border border-indigo-500/30">
-                <Clock className="w-5 h-5" />
+              <div className="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-[#E5DEC9] border border-white/10">
+                <Clock className="w-4 h-4" />
               </div>
               <div>
-                <p className="text-[11px] text-slate-400 uppercase font-semibold">Time</p>
-                <p className="text-sm font-bold text-white">{event.time}</p>
+                <p className="text-[10px] text-[#A69E8C] uppercase font-semibold">Time</p>
+                <p className="text-xs font-bold text-[#F6F3EC]">{event.time}</p>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-indigo-500/20 flex items-center justify-center text-indigo-400 border border-indigo-500/30">
-                <MapPin className="w-5 h-5" />
+              <div className="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center text-[#E5DEC9] border border-white/10">
+                <MapPin className="w-4 h-4" />
               </div>
               <div>
-                <p className="text-[11px] text-slate-400 uppercase font-semibold">Venue</p>
-                <p className="text-sm font-bold text-white truncate max-w-[140px]">{event.venue}</p>
+                <p className="text-[10px] text-[#A69E8C] uppercase font-semibold">Venue</p>
+                <p className="text-xs font-bold text-[#F6F3EC] truncate max-w-[130px]">{event.venue}</p>
               </div>
             </div>
           </div>
 
           {/* Registration status / deadline urgency */}
-          <div className="bg-slate-800/60 backdrop-blur-md rounded-2xl p-4 border border-slate-700/60 space-y-3">
+          <div className="bg-black/60 backdrop-blur-md rounded-2xl p-4 border border-white/10 space-y-2.5 font-mono">
             <div className="flex items-center justify-between text-xs">
-              <span className="text-slate-300 font-medium">
-                {capacity.count} out of {capacity.max} spots reserved ({capacity.percentage}%)
+              <span className="text-[#C5BFAe] font-medium text-[11px]">
+                {capacity.count} of {capacity.max} seats reserved ({capacity.percentage}%)
               </span>
               {daysLeft !== null && daysLeft > 0 && !deadlinePassed && (
-                <span className="text-amber-400 font-semibold">
-                  ⏳ {daysLeft} {daysLeft === 1 ? 'day' : 'days'} left to register
+                <span className="text-[#E5DEC9] font-bold text-[11px]">
+                  ⏳ {daysLeft} {daysLeft === 1 ? 'day' : 'days'} remaining
                 </span>
               )}
             </div>
-            <div className="w-full h-2.5 bg-slate-700/80 rounded-full overflow-hidden">
+            <div className="w-full h-1.5 bg-white/15 rounded-full overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full transition-all duration-500"
+                className="h-full bg-gradient-to-r from-[#E5DEC9] to-white rounded-full transition-all duration-500"
                 style={{ width: `${capacity.percentage}%` }}
               />
             </div>
           </div>
 
           {/* Buttons */}
-          <div className="flex flex-wrap items-center gap-3 pt-2">
+          <div className="flex flex-wrap items-center gap-3 pt-2 font-mono text-xs uppercase tracking-wider">
             {canRegister ? (
               <Link
                 to={`/register/${event.id}`}
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white font-bold text-sm shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 hover:scale-[1.02] active:scale-[0.98] transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#F6F3EC] hover:bg-white text-[#141414] font-bold shadow-lg hover:scale-105 transition-all"
               >
-                <span>Register for Event</span>
+                <span>Register Now</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
             ) : (
               <button
                 disabled
-                className="px-6 py-3.5 rounded-xl bg-slate-800 text-slate-400 font-bold text-sm cursor-not-allowed border border-slate-700"
+                className="px-6 py-3 rounded-xl bg-white/5 text-stone-500 font-medium cursor-not-allowed border border-white/10"
               >
-                {isPast ? 'Event Finished' : deadlinePassed ? 'Registration Closed' : 'Sold Out / Full'}
+                {isPast ? 'Concluded' : deadlinePassed ? 'Registration Closed' : 'Fully Booked'}
               </button>
             )}
 
             <Link
               to={`/events/${event.id}`}
-              className="inline-flex items-center justify-center px-5 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-sm font-semibold border border-white/20 transition-all backdrop-blur-md"
+              className="inline-flex items-center justify-center px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-[#E5DEC9] hover:text-white font-medium border border-white/15 transition-all backdrop-blur-md"
             >
-              Full Details & Schedule
+              Full Details & Schedule &rarr;
             </Link>
           </div>
         </div>
 
         {/* Right Col: Large Showcase Image */}
         <div className="lg:col-span-5">
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-white/10 aspect-[4/3] group">
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/15 aspect-[4/3] group/img bg-black">
             <img
               src={imgSrc}
               alt={event.title}
               onError={() => setImgSrc(FALLBACK_IMAGE)}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+              className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-700 ease-out opacity-85"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-            <div className="absolute bottom-4 left-4 right-4 text-xs text-white/90 bg-black/40 backdrop-blur-md p-2.5 rounded-xl border border-white/10 flex items-center justify-between">
-              <span>Registration Deadline</span>
-              <span className="font-bold text-amber-300">{formatDate(event.registrationDeadline)}</span>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+            <div className="absolute bottom-4 left-4 right-4 text-xs font-mono text-[#F6F3EC] bg-black/60 backdrop-blur-md p-2.5 rounded-xl border border-white/15 flex items-center justify-between">
+              <span className="text-[#A69E8C]">DEADLINE:</span>
+              <span className="font-bold text-[#E5DEC9]">{formatDate(event.registrationDeadline)}</span>
             </div>
           </div>
         </div>

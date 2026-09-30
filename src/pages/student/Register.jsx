@@ -74,20 +74,22 @@ export function Register() {
   if (!event) {
     return (
       <div className="max-w-xl mx-auto px-4 py-20 text-center space-y-4">
-        <div className="w-16 h-16 bg-rose-100 text-rose-600 rounded-2xl flex items-center justify-center mx-auto">
+        <div className="w-16 h-16 bg-[#1e1e1e] text-rose-400 rounded-2xl flex items-center justify-center mx-auto border border-white/10">
           <AlertCircle className="w-8 h-8" />
         </div>
-        <h2 className="text-2xl font-extrabold text-slate-900">Event Not Found</h2>
-        <p className="text-sm text-slate-500">
+        <h2 className="text-2xl font-serif font-bold text-[#F6F3EC]">Event Not Found</h2>
+        <p className="text-sm text-[#A69E8C]">
           The event you are attempting to register for could not be found.
         </p>
-        <Link
-          to="/events"
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 text-white font-semibold text-sm hover:bg-indigo-700"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          <span>Browse Active Events</span>
-        </Link>
+        <div className="pt-2">
+          <Link
+            to="/events"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#F6F3EC] hover:bg-white text-[#141414] font-bold text-xs uppercase font-mono tracking-wider transition-all"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span>Browse Active Events</span>
+          </Link>
+        </div>
       </div>
     );
   }
@@ -175,219 +177,239 @@ export function Register() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-8">
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-8">
       {/* Back button */}
       <Link
         to={`/events/${event.id}`}
-        className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-600 hover:text-slate-900 transition-colors"
+        className="inline-flex items-center gap-2 text-xs sm:text-sm font-mono uppercase tracking-wider text-[#A69E8C] hover:text-[#F6F3EC] transition-colors"
       >
         <ArrowLeft className="w-4 h-4" />
-        <span>Back to Event Details</span>
+        <span>[ Back to Event Details ]</span>
       </Link>
 
       {/* Main Container Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left Col: Event Summary Sidebar */}
-        <div className="lg:col-span-5 bg-white rounded-3xl border border-slate-200/80 p-6 shadow-sm space-y-5">
-          <div className="aspect-[16/9] rounded-2xl overflow-hidden bg-slate-100">
+        <div className="lg:col-span-5 bg-[#141414] rounded-3xl border border-white/10 p-6 sm:p-7 shadow-2xl space-y-6 vintage-noise">
+          <div className="aspect-[16/9] rounded-2xl overflow-hidden bg-[#0c0c0c] border border-white/10">
             <img
               src={event.image}
               alt={event.title}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover opacity-90"
             />
           </div>
 
           <div>
             <CategoryBadge category={event.category} />
-            <h2 className="text-xl font-bold text-slate-900 mt-2 leading-snug">
+            <h2 className="text-xl sm:text-2xl font-serif font-bold text-[#F6F3EC] mt-3 leading-snug">
               {event.title}
             </h2>
           </div>
 
-          <div className="space-y-3 pt-3 border-t border-slate-100 text-xs text-slate-600">
-            <div className="flex items-center gap-2.5">
-              <Calendar className="w-4 h-4 text-indigo-600 flex-shrink-0" />
-              <span className="font-semibold text-slate-800">{formatDate(event.date)}</span>
+          <div className="space-y-3.5 pt-4 border-t border-white/10 text-xs sm:text-sm text-[#A69E8C]">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-xl bg-[#222222] text-[#ECE5D8] border border-white/10 flex items-center justify-center flex-shrink-0">
+                <Calendar className="w-4 h-4" />
+              </div>
+              <div>
+                <p className="text-[10px] uppercase font-mono tracking-wider text-[#8A8272]">Date</p>
+                <span className="font-bold text-[#F6F3EC]">{formatDate(event.date)}</span>
+              </div>
             </div>
-            <div className="flex items-center gap-2.5">
-              <Clock className="w-4 h-4 text-indigo-600 flex-shrink-0" />
-              <span>{event.time}</span>
+
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-xl bg-[#222222] text-[#ECE5D8] border border-white/10 flex items-center justify-center flex-shrink-0">
+                <Clock className="w-4 h-4" />
+              </div>
+              <div>
+                <p className="text-[10px] uppercase font-mono tracking-wider text-[#8A8272]">Time</p>
+                <span className="font-bold text-[#F6F3EC]">{event.time}</span>
+              </div>
             </div>
-            <div className="flex items-center gap-2.5">
-              <MapPin className="w-4 h-4 text-indigo-600 flex-shrink-0" />
-              <span>{event.venue}</span>
+
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-xl bg-[#222222] text-[#ECE5D8] border border-white/10 flex items-center justify-center flex-shrink-0">
+                <MapPin className="w-4 h-4" />
+              </div>
+              <div>
+                <p className="text-[10px] uppercase font-mono tracking-wider text-[#8A8272]">Venue</p>
+                <span className="font-bold text-[#F6F3EC]">{event.venue}</span>
+              </div>
             </div>
           </div>
 
-          <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-200/80 space-y-1 text-xs">
-            <div className="flex justify-between font-medium text-slate-700">
+          <div className="p-4 bg-[#181818] rounded-2xl border border-white/10 space-y-2 text-xs font-mono">
+            <div className="flex justify-between items-center text-[#A69E8C]">
               <span>Spots Available:</span>
-              <span className="font-bold text-indigo-600">
+              <span className="font-bold text-emerald-400">
                 {capacity.remaining} of {capacity.max}
               </span>
             </div>
-            <div className="flex justify-between font-medium text-slate-700">
-              <span>Deadline:</span>
-              <span>{formatDate(event.registrationDeadline)}</span>
+            <div className="flex justify-between items-center text-[#A69E8C]">
+              <span>Reg. Deadline:</span>
+              <span className="text-[#F6F3EC] font-semibold">{formatDate(event.registrationDeadline)}</span>
             </div>
           </div>
 
-          <div className="p-3 bg-indigo-50/70 border border-indigo-100 rounded-2xl text-[11px] text-indigo-800 flex items-start gap-2">
-            <Lock className="w-3.5 h-3.5 text-indigo-600 flex-shrink-0 mt-0.5" />
-            <span>Instant confirmation ticket will be generated upon submitting.</span>
+          <div className="p-3.5 bg-[#1c1a14] border border-amber-500/25 rounded-2xl text-[11px] text-amber-200/90 flex items-start gap-2.5 font-mono">
+            <Lock className="w-3.5 h-3.5 text-amber-400 flex-shrink-0 mt-0.5" />
+            <span>Instant confirmation pass with verifiable QR code will be generated upon submission.</span>
           </div>
         </div>
 
         {/* Right Col: Registration Form */}
-        <div className="lg:col-span-7 bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-sm">
-          <div className="mb-6">
-            <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">
+        <div className="lg:col-span-7 bg-[#141414] rounded-3xl border border-white/10 p-6 sm:p-8 lg:p-10 shadow-2xl vintage-noise">
+          <div className="mb-8">
+            <div className="text-[11px] font-mono text-[#A69E8C] uppercase tracking-widest mb-1.5">
+              [ OFFICIAL EVENT REGISTRATION // FORM ]
+            </div>
+            <h1 className="text-2xl sm:text-3xl font-serif font-bold text-[#F6F3EC] tracking-tight">
               Student Registration
             </h1>
-            <p className="text-xs sm:text-sm text-slate-500 mt-1">
-              Please enter your details accurately to issue your event ticket.
+            <p className="text-xs sm:text-sm text-[#A69E8C] mt-1 font-sans font-light">
+              Please enter your details accurately to issue your verified digital pass.
             </p>
           </div>
 
           {/* Registration closed warning if applicable */}
           {(deadlinePassed || isFull || isPast) && (
-            <div className="p-4 mb-6 bg-rose-50 border border-rose-200 rounded-2xl text-xs text-rose-800 flex items-start gap-2.5">
-              <AlertCircle className="w-4 h-4 text-rose-600 flex-shrink-0 mt-0.5" />
+            <div className="p-4 mb-6 bg-rose-950/40 border border-rose-500/30 rounded-2xl text-xs text-rose-200 flex items-start gap-3">
+              <AlertCircle className="w-4 h-4 text-rose-400 flex-shrink-0 mt-0.5" />
               <div>
-                <p className="font-bold">Registration is closed</p>
-                <p>
+                <p className="font-bold font-mono uppercase tracking-wider">Registration is closed</p>
+                <p className="text-[#A69E8C] mt-0.5">
                   {isPast
-                    ? 'This event has ended.'
+                    ? 'This event has already concluded.'
                     : deadlinePassed
                     ? 'The registration deadline has passed.'
-                    : 'This event has reached full capacity.'}
+                    : 'This event has reached maximum capacity.'}
                 </p>
               </div>
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+          <form onSubmit={handleSubmit} className="space-y-5" noValidate>
             {/* Full Name */}
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-                Full Name <span className="text-rose-500">*</span>
+              <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#ECE5D8] mb-2">
+                Full Name <span className="text-rose-400">*</span>
               </label>
               <div className="relative">
-                <User className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                <User className="w-4 h-4 text-[#736c60] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                 <input
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="e.g. John Doe"
-                  className={`w-full pl-10 pr-3.5 py-2.5 rounded-xl border text-sm text-slate-800 bg-slate-50/50 focus:outline-none focus:ring-2 transition-all ${
+                  className={`w-full pl-10 pr-3.5 py-3 rounded-xl border text-sm text-[#F6F3EC] bg-[#181818] placeholder-[#736c60] focus:outline-none focus:ring-2 transition-all ${
                     errors.name
-                      ? 'border-rose-400 focus:ring-rose-400/20'
-                      : 'border-slate-200 focus:border-indigo-500 focus:ring-indigo-500/20'
+                      ? 'border-rose-500/60 focus:border-rose-500 focus:ring-rose-500/20'
+                      : 'border-white/10 focus:border-[#ECE5D8] focus:ring-[#ECE5D8]/10'
                   }`}
                   disabled={deadlinePassed || isFull || isPast}
                 />
               </div>
               {errors.name && (
-                <p className="text-xs text-rose-500 mt-1 font-medium">{errors.name}</p>
+                <p className="text-xs text-rose-400 mt-1.5 font-mono">{errors.name}</p>
               )}
             </div>
 
             {/* Email Address */}
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-                Email Address <span className="text-rose-500">*</span>
+              <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#ECE5D8] mb-2">
+                Email Address <span className="text-rose-400">*</span>
               </label>
               <div className="relative">
-                <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                <Mail className="w-4 h-4 text-[#736c60] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="e.g. student@university.edu"
-                  className={`w-full pl-10 pr-3.5 py-2.5 rounded-xl border text-sm text-slate-800 bg-slate-50/50 focus:outline-none focus:ring-2 transition-all ${
+                  className={`w-full pl-10 pr-3.5 py-3 rounded-xl border text-sm text-[#F6F3EC] bg-[#181818] placeholder-[#736c60] focus:outline-none focus:ring-2 transition-all ${
                     errors.email
-                      ? 'border-rose-400 focus:ring-rose-400/20'
-                      : 'border-slate-200 focus:border-indigo-500 focus:ring-indigo-500/20'
+                      ? 'border-rose-500/60 focus:border-rose-500 focus:ring-rose-500/20'
+                      : 'border-white/10 focus:border-[#ECE5D8] focus:ring-[#ECE5D8]/10'
                   }`}
                   disabled={deadlinePassed || isFull || isPast}
                 />
               </div>
               {errors.email && (
-                <p className="text-xs text-rose-500 mt-1 font-medium">{errors.email}</p>
+                <p className="text-xs text-rose-400 mt-1.5 font-mono">{errors.email}</p>
               )}
             </div>
 
             {/* Phone Number */}
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-                Phone Number <span className="text-rose-500">*</span>
+              <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#ECE5D8] mb-2">
+                Phone Number <span className="text-rose-400">*</span>
               </label>
               <div className="relative">
-                <Phone className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                <Phone className="w-4 h-4 text-[#736c60] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                 <input
                   type="tel"
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="e.g. +91 98765 43210"
-                  className={`w-full pl-10 pr-3.5 py-2.5 rounded-xl border text-sm text-slate-800 bg-slate-50/50 focus:outline-none focus:ring-2 transition-all ${
+                  className={`w-full pl-10 pr-3.5 py-3 rounded-xl border text-sm text-[#F6F3EC] bg-[#181818] placeholder-[#736c60] focus:outline-none focus:ring-2 transition-all ${
                     errors.phone
-                      ? 'border-rose-400 focus:ring-rose-400/20'
-                      : 'border-slate-200 focus:border-indigo-500 focus:ring-indigo-500/20'
+                      ? 'border-rose-500/60 focus:border-rose-500 focus:ring-rose-500/20'
+                      : 'border-white/10 focus:border-[#ECE5D8] focus:ring-[#ECE5D8]/10'
                   }`}
                   disabled={deadlinePassed || isFull || isPast}
                 />
               </div>
               {errors.phone && (
-                <p className="text-xs text-rose-500 mt-1 font-medium">{errors.phone}</p>
+                <p className="text-xs text-rose-400 mt-1.5 font-mono">{errors.phone}</p>
               )}
             </div>
 
             {/* College / University */}
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-                College / University <span className="text-rose-500">*</span>
+              <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#ECE5D8] mb-2">
+                College / University <span className="text-rose-400">*</span>
               </label>
               <div className="relative">
-                <School className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                <School className="w-4 h-4 text-[#736c60] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                 <input
                   type="text"
                   name="college"
                   value={formData.college}
                   onChange={handleChange}
                   placeholder="e.g. Institute of Engineering & Technology"
-                  className={`w-full pl-10 pr-3.5 py-2.5 rounded-xl border text-sm text-slate-800 bg-slate-50/50 focus:outline-none focus:ring-2 transition-all ${
+                  className={`w-full pl-10 pr-3.5 py-3 rounded-xl border text-sm text-[#F6F3EC] bg-[#181818] placeholder-[#736c60] focus:outline-none focus:ring-2 transition-all ${
                     errors.college
-                      ? 'border-rose-400 focus:ring-rose-400/20'
-                      : 'border-slate-200 focus:border-indigo-500 focus:ring-indigo-500/20'
+                      ? 'border-rose-500/60 focus:border-rose-500 focus:ring-rose-500/20'
+                      : 'border-white/10 focus:border-[#ECE5D8] focus:ring-[#ECE5D8]/10'
                   }`}
                   disabled={deadlinePassed || isFull || isPast}
                 />
               </div>
               {errors.college && (
-                <p className="text-xs text-rose-500 mt-1 font-medium">{errors.college}</p>
+                <p className="text-xs text-rose-400 mt-1.5 font-mono">{errors.college}</p>
               )}
             </div>
 
             {/* Academic Year & Department in 2 columns */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-                  Academic Year <span className="text-rose-500">*</span>
+                <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#ECE5D8] mb-2">
+                  Academic Year <span className="text-rose-400">*</span>
                 </label>
                 <div className="relative">
-                  <GraduationCap className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                  <GraduationCap className="w-4 h-4 text-[#736c60] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                   <select
                     name="year"
                     value={formData.year}
                     onChange={handleChange}
-                    className="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-slate-200 text-sm text-slate-800 bg-slate-50/50 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all cursor-pointer"
+                    className="w-full pl-10 pr-3.5 py-3 rounded-xl border border-white/10 text-sm text-[#F6F3EC] bg-[#181818] focus:outline-none focus:border-[#ECE5D8] focus:ring-2 focus:ring-[#ECE5D8]/10 transition-all cursor-pointer"
                     disabled={deadlinePassed || isFull || isPast}
                   >
                     {ACADEMIC_YEARS.map((y) => (
-                      <option key={y} value={y}>
+                      <option key={y} value={y} className="bg-[#181818] text-[#F6F3EC]">
                         {y}
                       </option>
                     ))}
@@ -396,18 +418,18 @@ export function Register() {
               </div>
 
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#ECE5D8] mb-2">
                   Department
                 </label>
                 <div className="relative">
-                  <BookOpen className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                  <BookOpen className="w-4 h-4 text-[#736c60] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                   <input
                     type="text"
                     name="department"
                     value={formData.department}
                     onChange={handleChange}
                     placeholder="e.g. Computer Science"
-                    className="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-slate-200 text-sm text-slate-800 bg-slate-50/50 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all"
+                    className="w-full pl-10 pr-3.5 py-3 rounded-xl border border-white/10 text-sm text-[#F6F3EC] bg-[#181818] placeholder-[#736c60] focus:outline-none focus:border-[#ECE5D8] focus:ring-2 focus:ring-[#ECE5D8]/10 transition-all"
                     disabled={deadlinePassed || isFull || isPast}
                   />
                 </div>
@@ -416,43 +438,43 @@ export function Register() {
 
             {/* Student ID / Roll Number (Optional) */}
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-                Student ID / Roll No. (Optional)
+              <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#ECE5D8] mb-2">
+                Student ID / Roll No. <span className="text-[#8A8272] lowercase font-normal">(optional)</span>
               </label>
               <div className="relative">
-                <IdCard className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                <IdCard className="w-4 h-4 text-[#736c60] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                 <input
                   type="text"
                   name="studentId"
                   value={formData.studentId}
                   onChange={handleChange}
                   placeholder="e.g. CSE-2024-055"
-                  className="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-slate-200 text-sm text-slate-800 bg-slate-50/50 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all"
+                  className="w-full pl-10 pr-3.5 py-3 rounded-xl border border-white/10 text-sm text-[#F6F3EC] bg-[#181818] placeholder-[#736c60] focus:outline-none focus:border-[#ECE5D8] focus:ring-2 focus:ring-[#ECE5D8]/10 transition-all"
                   disabled={deadlinePassed || isFull || isPast}
                 />
               </div>
             </div>
 
             {/* Submit Button */}
-            <div className="pt-4">
+            <div className="pt-3">
               <button
                 type="submit"
                 disabled={isSubmitting || deadlinePassed || isFull || isPast}
-                className={`w-full py-3.5 px-6 rounded-2xl font-bold text-sm text-white shadow-lg transition-all flex items-center justify-center gap-2 ${
+                className={`w-full py-4 px-6 rounded-xl font-bold font-mono uppercase text-xs sm:text-sm tracking-wider transition-all flex items-center justify-center gap-2 ${
                   deadlinePassed || isFull || isPast
-                    ? 'bg-slate-300 cursor-not-allowed shadow-none'
-                    : 'bg-indigo-600 hover:bg-indigo-700 shadow-indigo-500/25 active:scale-[0.99]'
+                    ? 'bg-[#222222] text-[#736c60] border border-white/5 cursor-not-allowed shadow-none'
+                    : 'bg-[#F6F3EC] hover:bg-white text-[#141414] shadow-xl hover:shadow-white/15 active:scale-[0.99] cursor-pointer'
                 }`}
               >
                 {isSubmitting ? (
                   <>
-                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                    <span>Processing Registration...</span>
+                    <div className="w-4 h-4 border-2 border-[#141414]/30 border-t-[#141414] rounded-full animate-spin" />
+                    <span>Issuing Digital Pass...</span>
                   </>
                 ) : (
                   <>
-                    <CheckCircle2 className="w-4 h-4" />
-                    <span>Confirm & Get Event Pass</span>
+                    <CheckCircle2 className="w-4 h-4 text-[#141414]" />
+                    <span>Confirm & Generate Event Pass</span>
                   </>
                 )}
               </button>

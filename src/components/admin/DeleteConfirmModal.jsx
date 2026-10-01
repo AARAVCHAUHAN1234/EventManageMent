@@ -12,9 +12,9 @@ export function DeleteConfirmModal({
 }) {
   return (
     <Modal isOpen={isOpen} onClose={onClose} title={title} maxWidth="max-w-md">
-      <div className="space-y-4">
-        <div className="flex items-start gap-3.5 p-3.5 bg-rose-50 border border-rose-100 rounded-xl text-rose-800 text-xs sm:text-sm">
-          <AlertTriangle className="w-5 h-5 text-rose-600 flex-shrink-0 mt-0.5" />
+      <div className="space-y-5">
+        <div className="flex items-start gap-3.5 p-4 bg-rose-950/40 border border-rose-500/30 rounded-2xl text-rose-200 text-xs sm:text-sm font-mono leading-relaxed">
+          <AlertTriangle className="w-5 h-5 text-rose-400 flex-shrink-0 mt-0.5" />
           <p>{message}</p>
         </div>
 
@@ -22,7 +22,7 @@ export function DeleteConfirmModal({
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100 rounded-xl transition-colors"
+            className="px-4 py-2 text-xs font-mono uppercase tracking-wider text-[#A69E8C] hover:bg-[#1f1f1f] hover:text-[#F6F3EC] rounded-xl transition-colors"
           >
             Cancel
           </button>
@@ -32,7 +32,7 @@ export function DeleteConfirmModal({
               onConfirm();
               onClose();
             }}
-            className="px-4 py-2 text-sm font-semibold text-white bg-rose-600 hover:bg-rose-700 rounded-xl shadow-sm shadow-rose-500/20 transition-colors"
+            className="px-5 py-2 text-xs font-mono uppercase tracking-wider font-bold text-white bg-rose-600 hover:bg-rose-700 rounded-xl shadow-md transition-all active:scale-95"
           >
             {confirmText}
           </button>

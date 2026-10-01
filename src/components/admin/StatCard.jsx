@@ -3,55 +3,50 @@ import React from 'react';
 export function StatCard({ title, value, subtitle, icon: Icon, color = 'indigo' }) {
   const colorMap = {
     indigo: {
-      bg: 'bg-indigo-50',
-      text: 'text-indigo-600',
-      border: 'border-indigo-100',
-      glow: 'shadow-indigo-500/10',
+      iconBg: 'bg-white/5',
+      iconText: 'text-[#ECE5D8]',
+      tag: 'text-[#ECE5D8]',
     },
     emerald: {
-      bg: 'bg-emerald-50',
-      text: 'text-emerald-600',
-      border: 'border-emerald-100',
-      glow: 'shadow-emerald-500/10',
+      iconBg: 'bg-emerald-950/40',
+      iconText: 'text-emerald-400',
+      tag: 'text-emerald-400',
     },
     purple: {
-      bg: 'bg-purple-50',
-      text: 'text-purple-600',
-      border: 'border-purple-100',
-      glow: 'shadow-purple-500/10',
+      iconBg: 'bg-white/5',
+      iconText: 'text-[#E5DEC9]',
+      tag: 'text-[#E5DEC9]',
     },
     amber: {
-      bg: 'bg-amber-50',
-      text: 'text-amber-600',
-      border: 'border-amber-100',
-      glow: 'shadow-amber-500/10',
+      iconBg: 'bg-amber-950/40',
+      iconText: 'text-amber-400',
+      tag: 'text-amber-400',
     },
     rose: {
-      bg: 'bg-rose-50',
-      text: 'text-rose-600',
-      border: 'border-rose-100',
-      glow: 'shadow-rose-500/10',
+      iconBg: 'bg-rose-950/40',
+      iconText: 'text-rose-400',
+      tag: 'text-rose-400',
     },
   };
 
   const scheme = colorMap[color] || colorMap.indigo;
 
   return (
-    <div className={`bg-white p-5 rounded-2xl border ${scheme.border} shadow-sm ${scheme.glow} hover:shadow-md transition-shadow flex items-center justify-between`}>
-      <div className="space-y-1">
-        <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
-          {title}
+    <div className="bg-[#141414] p-5 sm:p-6 rounded-3xl border border-white/10 shadow-2xl hover:border-white/20 transition-all flex items-center justify-between vintage-noise">
+      <div className="space-y-1.5">
+        <p className="text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-widest text-[#A69E8C]">
+          [ {title} ]
         </p>
-        <p className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+        <p className="text-3xl sm:text-4xl font-serif font-bold text-[#F6F3EC] tracking-tight">
           {value}
         </p>
         {subtitle && (
-          <p className="text-xs text-slate-500">{subtitle}</p>
+          <p className="text-xs text-[#8A8272] font-sans font-light">{subtitle}</p>
         )}
       </div>
       {Icon && (
-        <div className={`w-12 h-12 rounded-2xl ${scheme.bg} ${scheme.text} flex items-center justify-center flex-shrink-0`}>
-          <Icon className="w-6 h-6" />
+        <div className={`w-12 h-12 rounded-2xl ${scheme.iconBg} ${scheme.iconText} border border-white/10 flex items-center justify-center flex-shrink-0 shadow-inner`}>
+          <Icon className="w-5 h-5" />
         </div>
       )}
     </div>

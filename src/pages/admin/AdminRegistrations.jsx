@@ -135,11 +135,11 @@ export function AdminRegistrations() {
   return (
     <AdminLayout
       title="Student Registrations"
-      subtitle="Track verified attendees, filter by event, view student profiles and export data."
+      subtitle="Track verified attendees, filter by event, view student profiles and export digital rosters."
       actions={
         <button
           onClick={handleExportCSV}
-          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs sm:text-sm font-semibold shadow-md transition-all"
+          className="inline-flex items-center gap-2 px-4.5 py-2.5 rounded-xl bg-[#F6F3EC] hover:bg-white text-[#141414] text-xs font-mono font-bold uppercase tracking-wider shadow-lg hover:shadow-white/10 transition-all active:scale-95 cursor-pointer"
         >
           <Download className="w-4 h-4" />
           <span>Export to CSV</span>
@@ -148,32 +148,32 @@ export function AdminRegistrations() {
     >
       <div className="space-y-6">
         {/* Search and Filters Strip */}
-        <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4">
+        <div className="bg-[#141414] p-4 sm:p-5 rounded-3xl border border-white/10 shadow-2xl flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4 vintage-noise">
           {/* Search bar */}
           <div className="relative flex-1">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+            <Search className="w-4 h-4 text-[#A69E8C] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
             <input
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search by student name, email, or college..."
-              className="w-full pl-10 pr-3.5 py-2 rounded-xl border border-slate-200 text-xs sm:text-sm bg-slate-50 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+              className="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-white/10 text-xs sm:text-sm bg-[#1c1c1c] text-[#F6F3EC] placeholder-[#A69E8C]/60 focus:outline-none focus:border-[#ECE5D8] focus:ring-1 focus:ring-[#ECE5D8] transition-all font-sans"
             />
           </div>
 
           {/* Filters */}
           <div className="flex flex-wrap items-center gap-3">
             {/* Event Filter */}
-            <div className="flex items-center gap-1.5">
-              <label className="text-xs font-semibold text-slate-500">Event:</label>
+            <div className="flex items-center gap-2">
+              <label className="text-[11px] font-mono uppercase tracking-widest text-[#A69E8C]">Event:</label>
               <select
                 value={selectedEventId}
                 onChange={(e) => setSelectedEventId(e.target.value)}
-                className="px-3 py-2 rounded-xl border border-slate-200 text-xs sm:text-sm bg-slate-50 font-medium focus:outline-none focus:border-indigo-500 max-w-[200px] truncate cursor-pointer"
+                className="px-3.5 py-2.5 rounded-xl border border-white/10 text-xs sm:text-sm bg-[#1c1c1c] text-[#F6F3EC] font-medium focus:outline-none focus:border-[#ECE5D8] max-w-[200px] truncate cursor-pointer"
               >
-                <option value="all">All Events ({registrations.length})</option>
+                <option value="all" className="bg-[#181818] text-[#F6F3EC]">All Events ({registrations.length})</option>
                 {events.map((evt) => (
-                  <option key={evt.id} value={evt.id}>
+                  <option key={evt.id} value={evt.id} className="bg-[#181818] text-[#F6F3EC]">
                     {evt.title}
                   </option>
                 ))}
@@ -181,16 +181,16 @@ export function AdminRegistrations() {
             </div>
 
             {/* Academic Year Filter */}
-            <div className="flex items-center gap-1.5">
-              <label className="text-xs font-semibold text-slate-500">Year:</label>
+            <div className="flex items-center gap-2">
+              <label className="text-[11px] font-mono uppercase tracking-widest text-[#A69E8C]">Year:</label>
               <select
                 value={selectedYear}
                 onChange={(e) => setSelectedYear(e.target.value)}
-                className="px-3 py-2 rounded-xl border border-slate-200 text-xs sm:text-sm bg-slate-50 font-medium focus:outline-none focus:border-indigo-500 cursor-pointer"
+                className="px-3.5 py-2.5 rounded-xl border border-white/10 text-xs sm:text-sm bg-[#1c1c1c] text-[#F6F3EC] font-medium focus:outline-none focus:border-[#ECE5D8] cursor-pointer"
               >
-                <option value="all">All Years</option>
+                <option value="all" className="bg-[#181818] text-[#F6F3EC]">All Years</option>
                 {yearsList.map((year) => (
-                  <option key={year} value={year}>
+                  <option key={year} value={year} className="bg-[#181818] text-[#F6F3EC]">
                     {year}
                   </option>
                 ))}
@@ -200,11 +200,11 @@ export function AdminRegistrations() {
         </div>
 
         {/* Registrations Table */}
-        <div className="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+        <div className="bg-[#141414] rounded-3xl border border-white/10 shadow-2xl overflow-hidden vintage-noise">
           {filteredRegistrations.length > 0 ? (
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs sm:text-sm">
-                <thead className="bg-slate-50/80 text-slate-500 uppercase tracking-wider text-[11px] border-b border-slate-100">
+                <thead className="bg-[#181818] text-[#A69E8C] uppercase tracking-widest text-[10px] font-mono border-b border-white/10">
                   <tr>
                     <th className="px-6 py-4 font-bold">Student Name</th>
                     <th className="px-6 py-4 font-bold">Event</th>
@@ -214,20 +214,20 @@ export function AdminRegistrations() {
                     <th className="px-6 py-4 font-bold text-right">Actions</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100">
+                <tbody className="divide-y divide-white/5">
                   {filteredRegistrations.map((reg) => {
                     const evt = eventMap[reg.eventId];
                     return (
-                      <tr key={reg.id} className="hover:bg-slate-50/60 transition-colors">
+                      <tr key={reg.id} className="hover:bg-[#181818]/60 transition-colors">
                         {/* Student */}
                         <td className="px-6 py-4">
-                          <p className="font-bold text-slate-900">{reg.name}</p>
-                          <p className="text-xs text-slate-400 font-mono">{reg.id}</p>
+                          <p className="font-serif font-bold text-sm sm:text-base text-[#F6F3EC]">{reg.name}</p>
+                          <p className="text-xs text-[#8A8272] font-mono">{reg.id}</p>
                         </td>
 
                         {/* Event */}
                         <td className="px-6 py-4">
-                          <p className="font-semibold text-slate-800 max-w-xs truncate">
+                          <p className="font-medium text-stone-200 max-w-xs truncate">
                             {evt?.title || 'Unknown Event'}
                           </p>
                           {evt && <CategoryBadge category={evt.category} className="mt-1" />}
@@ -235,28 +235,28 @@ export function AdminRegistrations() {
 
                         {/* Contact */}
                         <td className="px-6 py-4">
-                          <p className="text-slate-700">{reg.email}</p>
-                          <p className="text-xs text-slate-400">{reg.phone}</p>
+                          <p className="text-stone-300 font-sans text-xs">{reg.email}</p>
+                          <p className="text-xs text-[#8A8272] font-mono">{reg.phone}</p>
                         </td>
 
                         {/* College & Year */}
-                        <td className="px-6 py-4 text-slate-600">
-                          <p className="truncate max-w-[180px]">{reg.college}</p>
-                          <p className="text-xs text-slate-400">{reg.year}</p>
+                        <td className="px-6 py-4 text-stone-300">
+                          <p className="truncate max-w-[180px] font-sans text-xs">{reg.college}</p>
+                          <p className="text-xs text-[#8A8272] font-mono">{reg.year}</p>
                         </td>
 
                         {/* Registered At */}
-                        <td className="px-6 py-4 text-slate-500 whitespace-nowrap">
+                        <td className="px-6 py-4 text-[#A69E8C] font-mono whitespace-nowrap text-xs">
                           {formatDateTime(reg.registeredAt)}
                         </td>
 
                         {/* Actions */}
                         <td className="px-6 py-4 text-right whitespace-nowrap">
-                          <div className="flex items-center justify-end gap-1.5">
+                          <div className="flex items-center justify-end gap-1">
                             <button
                               type="button"
                               onClick={() => setViewRegistration(reg)}
-                              className="p-2 rounded-lg text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 transition-colors"
+                              className="p-2 rounded-xl text-[#A69E8C] hover:text-[#F6F3EC] hover:bg-white/5 transition-colors"
                               title="View Full Details"
                             >
                               <Eye className="w-4 h-4" />
@@ -265,7 +265,7 @@ export function AdminRegistrations() {
                             <button
                               type="button"
                               onClick={() => setDeleteTarget(reg)}
-                              className="p-2 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-colors"
+                              className="p-2 rounded-xl text-[#A69E8C] hover:text-rose-400 hover:bg-rose-500/10 transition-colors"
                               title="Delete Registration"
                             >
                               <Trash2 className="w-4 h-4" />
@@ -279,10 +279,10 @@ export function AdminRegistrations() {
               </table>
             </div>
           ) : (
-            <div className="p-12 text-center text-xs text-slate-500 space-y-2">
-              <Users className="w-8 h-8 text-slate-300 mx-auto" />
-              <p className="font-semibold text-slate-700">No student registrations found.</p>
-              <p className="text-slate-400">Try changing your search query or event filter.</p>
+            <div className="p-12 text-center text-xs font-mono text-[#A69E8C] space-y-2">
+              <Users className="w-8 h-8 text-[#A69E8C]/40 mx-auto" />
+              <p className="font-bold text-[#ECE5D8]">No student registrations found.</p>
+              <p className="text-[#8A8272]">Try changing your search query or event filter.</p>
             </div>
           )}
         </div>
@@ -298,89 +298,89 @@ export function AdminRegistrations() {
         {viewRegistration && (
           <div className="space-y-5">
             {/* Event Header in Modal */}
-            <div className="p-4 bg-indigo-50/70 border border-indigo-100 rounded-2xl space-y-1">
-              <p className="text-[10px] font-bold uppercase tracking-wider text-indigo-600">
-                Registered Event
+            <div className="p-4.5 bg-[#181818] border border-white/10 rounded-2xl space-y-1 vintage-noise">
+              <p className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#ECE5D8]">
+                [ REGISTERED EVENT ]
               </p>
-              <h4 className="font-bold text-base text-slate-900">
+              <h4 className="font-serif font-bold text-base sm:text-lg text-[#F6F3EC]">
                 {eventMap[viewRegistration.eventId]?.title || 'Unknown Event'}
               </h4>
-              <p className="text-xs text-slate-500">
+              <p className="text-xs text-[#A69E8C] font-mono">
                 {formatDate(eventMap[viewRegistration.eventId]?.date)} • {eventMap[viewRegistration.eventId]?.venue}
               </p>
             </div>
 
             {/* Student Info Fields */}
-            <div className="grid grid-cols-2 gap-4 text-xs">
+            <div className="grid grid-cols-2 gap-4 text-xs font-mono">
               <div className="col-span-2 sm:col-span-1">
-                <p className="text-slate-400 uppercase font-semibold">Student Name</p>
-                <p className="font-bold text-sm text-slate-800 mt-0.5">{viewRegistration.name}</p>
+                <p className="text-[#8A8272] uppercase tracking-wider text-[10px]">Student Name</p>
+                <p className="font-serif font-bold text-sm text-[#F6F3EC] mt-0.5">{viewRegistration.name}</p>
               </div>
 
               <div className="col-span-2 sm:col-span-1">
-                <p className="text-slate-400 uppercase font-semibold">Registration ID</p>
-                <p className="font-mono font-bold text-slate-800 mt-0.5">{viewRegistration.id}</p>
+                <p className="text-[#8A8272] uppercase tracking-wider text-[10px]">Registration ID</p>
+                <p className="font-bold text-[#ECE5D8] mt-0.5">{viewRegistration.id}</p>
               </div>
 
               <div>
-                <p className="text-slate-400 uppercase font-semibold">Email Address</p>
-                <p className="font-medium text-slate-800 mt-0.5">{viewRegistration.email}</p>
+                <p className="text-[#8A8272] uppercase tracking-wider text-[10px]">Email Address</p>
+                <p className="font-medium text-stone-200 mt-0.5 font-sans">{viewRegistration.email}</p>
               </div>
 
               <div>
-                <p className="text-slate-400 uppercase font-semibold">Phone Number</p>
-                <p className="font-medium text-slate-800 mt-0.5">{viewRegistration.phone}</p>
+                <p className="text-[#8A8272] uppercase tracking-wider text-[10px]">Phone Number</p>
+                <p className="font-medium text-stone-200 mt-0.5">{viewRegistration.phone}</p>
               </div>
 
               <div className="col-span-2">
-                <p className="text-slate-400 uppercase font-semibold">College / University</p>
-                <p className="font-medium text-slate-800 mt-0.5">{viewRegistration.college}</p>
+                <p className="text-[#8A8272] uppercase tracking-wider text-[10px]">College / University</p>
+                <p className="font-medium text-stone-200 mt-0.5 font-sans">{viewRegistration.college}</p>
               </div>
 
               <div>
-                <p className="text-slate-400 uppercase font-semibold">Academic Year</p>
-                <p className="font-medium text-slate-800 mt-0.5">{viewRegistration.year}</p>
+                <p className="text-[#8A8272] uppercase tracking-wider text-[10px]">Academic Year</p>
+                <p className="font-medium text-stone-200 mt-0.5">{viewRegistration.year}</p>
               </div>
 
               <div>
-                <p className="text-slate-400 uppercase font-semibold">Department</p>
-                <p className="font-medium text-slate-800 mt-0.5">
+                <p className="text-[#8A8272] uppercase tracking-wider text-[10px]">Department</p>
+                <p className="font-medium text-stone-200 mt-0.5 font-sans">
                   {viewRegistration.department || 'Not provided'}
                 </p>
               </div>
 
               {viewRegistration.studentId && (
                 <div>
-                  <p className="text-slate-400 uppercase font-semibold">Student ID / Roll No.</p>
-                  <p className="font-medium text-slate-800 mt-0.5">{viewRegistration.studentId}</p>
+                  <p className="text-[#8A8272] uppercase tracking-wider text-[10px]">Student ID / Roll No.</p>
+                  <p className="font-medium text-stone-200 mt-0.5">{viewRegistration.studentId}</p>
                 </div>
               )}
 
               <div>
-                <p className="text-slate-400 uppercase font-semibold">Registration Timestamp</p>
-                <p className="font-medium text-slate-800 mt-0.5">
+                <p className="text-[#8A8272] uppercase tracking-wider text-[10px]">Registration Timestamp</p>
+                <p className="font-medium text-stone-200 mt-0.5">
                   {formatDateTime(viewRegistration.registeredAt)}
                 </p>
               </div>
             </div>
 
             {/* Footer Modal Actions */}
-            <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+            <div className="pt-4 border-t border-white/10 flex items-center justify-between font-mono">
               <button
                 type="button"
                 onClick={() => {
                   setDeleteTarget(viewRegistration);
                 }}
-                className="px-3.5 py-2 text-xs font-semibold text-rose-600 hover:bg-rose-50 rounded-xl transition-colors flex items-center gap-1.5"
+                className="px-3.5 py-2 text-xs uppercase tracking-wider text-rose-400 hover:bg-rose-500/10 rounded-xl transition-colors flex items-center gap-1.5"
               >
                 <Trash2 className="w-3.5 h-3.5" />
-                <span>Delete Registration</span>
+                <span>Delete Entry</span>
               </button>
 
               <button
                 type="button"
                 onClick={() => setViewRegistration(null)}
-                className="px-4 py-2 text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl transition-colors"
+                className="px-4.5 py-2 text-xs uppercase tracking-wider font-bold bg-[#222222] hover:bg-[#2c2c2c] border border-white/10 text-[#F6F3EC] rounded-xl transition-colors"
               >
                 Close
               </button>

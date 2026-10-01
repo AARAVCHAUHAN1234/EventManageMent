@@ -146,17 +146,24 @@ export function App() {
                 path="*"
                 element={
                   <StudentLayout>
-                    <div className="max-w-md mx-auto py-24 text-center px-4 space-y-4">
-                      <h2 className="text-3xl font-extrabold text-slate-900">404 - Page Not Found</h2>
-                      <p className="text-sm text-slate-500">
-                        The page you are trying to access does not exist.
+                    <div className="max-w-lg mx-auto py-24 text-center px-4 space-y-5 vintage-noise">
+                      <div className="inline-block px-3.5 py-1 rounded-full bg-[#181818] border border-white/10 text-[#ECE5D8] text-[10px] font-mono uppercase tracking-widest">
+                        [ 404 // NOT FOUND ]
+                      </div>
+                      <h2 className="text-4xl sm:text-5xl font-serif font-bold text-[#F6F3EC] tracking-tight">
+                        Page Not Found
+                      </h2>
+                      <p className="text-xs sm:text-sm text-[#A69E8C] max-w-sm mx-auto font-sans font-light">
+                        The campus link you are attempting to visit does not exist or has been archived.
                       </p>
-                      <a
-                        href="/"
-                        className="inline-flex px-5 py-2.5 rounded-xl bg-indigo-600 text-white font-semibold text-xs"
-                      >
-                        Return Home
-                      </a>
+                      <div className="pt-2">
+                        <a
+                          href="/"
+                          className="inline-flex px-6 py-3 rounded-xl bg-[#F6F3EC] hover:bg-white text-[#141414] font-mono font-bold text-xs uppercase tracking-wider shadow-lg transition-all"
+                        >
+                          Return to Home
+                        </a>
+                      </div>
                     </div>
                   </StudentLayout>
                 }

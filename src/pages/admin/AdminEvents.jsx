@@ -50,11 +50,11 @@ export function AdminEvents() {
   return (
     <AdminLayout
       title="Event Management"
-      subtitle="View, create, modify, and manage all college club events."
+      subtitle="View, create, modify, and manage all campus club events and masterclasses."
       actions={
         <Link
           to="/admin/events/new"
-          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs sm:text-sm font-semibold shadow-md shadow-indigo-500/20 transition-all"
+          className="inline-flex items-center gap-2 px-4.5 py-2.5 rounded-xl bg-[#F6F3EC] hover:bg-white text-[#141414] text-xs font-mono font-bold uppercase tracking-wider shadow-lg hover:shadow-white/10 transition-all active:scale-95"
         >
           <PlusCircle className="w-4 h-4" />
           <span>Add New Event</span>
@@ -63,44 +63,44 @@ export function AdminEvents() {
     >
       <div className="space-y-6">
         {/* Search & Filter Bar */}
-        <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="bg-[#141414] p-4 sm:p-5 rounded-3xl border border-white/10 shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-4 vintage-noise">
           <div className="relative w-full sm:w-80">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-[#A69E8C] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
             <input
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search by event title or venue..."
-              className="w-full pl-10 pr-3 py-2 rounded-xl border border-slate-200 text-xs sm:text-sm bg-slate-50 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+              placeholder="Search title or venue..."
+              className="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-white/10 text-xs sm:text-sm bg-[#1c1c1c] text-[#F6F3EC] placeholder-[#A69E8C]/60 focus:outline-none focus:border-[#ECE5D8] focus:ring-1 focus:ring-[#ECE5D8] transition-all font-sans"
             />
           </div>
 
-          <div className="flex items-center gap-2 w-full sm:w-auto">
-            <label className="text-xs font-semibold text-slate-500">Category:</label>
+          <div className="flex items-center gap-2.5 w-full sm:w-auto">
+            <label className="text-[11px] font-mono uppercase tracking-widest text-[#A69E8C]">Category:</label>
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="px-3 py-2 rounded-xl border border-slate-200 text-xs sm:text-sm bg-slate-50 font-medium focus:outline-none focus:border-indigo-500 cursor-pointer"
+              className="px-3.5 py-2.5 rounded-xl border border-white/10 text-xs sm:text-sm bg-[#1c1c1c] text-[#F6F3EC] font-medium focus:outline-none focus:border-[#ECE5D8] cursor-pointer"
             >
-              <option value="All">All Categories</option>
-              <option value="Workshop">Workshop</option>
-              <option value="Hackathon">Hackathon</option>
-              <option value="Seminar">Seminar</option>
-              <option value="Competition">Competition</option>
-              <option value="Cultural">Cultural</option>
-              <option value="Sports">Sports</option>
-              <option value="Technical">Technical</option>
-              <option value="Other">Other</option>
+              <option value="All" className="bg-[#181818] text-[#F6F3EC]">All Categories</option>
+              <option value="Workshop" className="bg-[#181818] text-[#F6F3EC]">Workshop</option>
+              <option value="Hackathon" className="bg-[#181818] text-[#F6F3EC]">Hackathon</option>
+              <option value="Seminar" className="bg-[#181818] text-[#F6F3EC]">Seminar</option>
+              <option value="Competition" className="bg-[#181818] text-[#F6F3EC]">Competition</option>
+              <option value="Cultural" className="bg-[#181818] text-[#F6F3EC]">Cultural</option>
+              <option value="Sports" className="bg-[#181818] text-[#F6F3EC]">Sports</option>
+              <option value="Technical" className="bg-[#181818] text-[#F6F3EC]">Technical</option>
+              <option value="Other" className="bg-[#181818] text-[#F6F3EC]">Other</option>
             </select>
           </div>
         </div>
 
         {/* Events Table Container */}
-        <div className="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+        <div className="bg-[#141414] rounded-3xl border border-white/10 shadow-2xl overflow-hidden vintage-noise">
           {filteredEvents.length > 0 ? (
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs sm:text-sm">
-                <thead className="bg-slate-50/80 text-slate-500 uppercase tracking-wider text-[11px] border-b border-slate-100">
+                <thead className="bg-[#181818] text-[#A69E8C] uppercase tracking-widest text-[10px] font-mono border-b border-white/10">
                   <tr>
                     <th className="px-6 py-4 font-bold">Event Details</th>
                     <th className="px-6 py-4 font-bold">Category</th>
@@ -111,30 +111,30 @@ export function AdminEvents() {
                     <th className="px-6 py-4 font-bold text-right">Actions</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100">
+                <tbody className="divide-y divide-white/5">
                   {filteredEvents.map((evt) => {
                     const capacity = getEventCapacity(evt);
                     const status = getEventStatus(evt);
                     return (
-                      <tr key={evt.id} className="hover:bg-slate-50/60 transition-colors">
+                      <tr key={evt.id} className="hover:bg-[#181818]/60 transition-colors">
                         {/* Title & Image */}
                         <td className="px-6 py-4">
                           <div className="flex items-center gap-3.5 max-w-sm">
                             <img
                               src={evt.image}
                               alt={evt.title}
-                              className="w-12 h-12 rounded-xl object-cover flex-shrink-0 bg-slate-100 shadow-2xs"
+                              className="w-12 h-12 rounded-xl object-cover flex-shrink-0 bg-[#1c1c1c] border border-white/10 opacity-90 shadow-md"
                             />
                             <div className="min-w-0">
-                              <p className="font-bold text-slate-900 truncate flex items-center gap-1.5">
+                              <p className="font-serif font-bold text-sm sm:text-base text-[#F6F3EC] truncate flex items-center gap-1.5">
                                 {evt.title}
                                 {evt.isFeatured && (
-                                  <span className="p-0.5 rounded bg-amber-100 text-amber-800 text-[10px] font-bold" title="Featured Event">
-                                    ⭐
+                                  <span className="p-0.5 rounded bg-amber-500/20 text-amber-300 text-[10px] font-mono font-bold" title="Featured Event">
+                                    ★
                                   </span>
                                 )}
                               </p>
-                              <p className="text-xs text-slate-500 truncate max-w-xs">
+                              <p className="text-xs text-[#A69E8C] truncate max-w-xs font-sans font-light">
                                 {evt.shortDescription}
                               </p>
                             </div>
@@ -147,25 +147,25 @@ export function AdminEvents() {
                         </td>
 
                         {/* Date & Time */}
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          <p className="font-semibold text-slate-800">{formatDate(evt.date)}</p>
-                          <p className="text-xs text-slate-400">{evt.time}</p>
+                        <td className="px-6 py-4 whitespace-nowrap font-mono">
+                          <p className="font-semibold text-stone-200 text-xs sm:text-sm">{formatDate(evt.date)}</p>
+                          <p className="text-xs text-[#8A8272]">{evt.time}</p>
                         </td>
 
                         {/* Venue */}
-                        <td className="px-6 py-4 text-slate-600">
+                        <td className="px-6 py-4 text-stone-300 font-sans">
                           <p className="truncate max-w-[150px]">{evt.venue}</p>
                         </td>
 
                         {/* Registrations */}
-                        <td className="px-6 py-4 whitespace-nowrap">
+                        <td className="px-6 py-4 whitespace-nowrap font-mono">
                           <div className="space-y-1">
-                            <span className="font-bold text-slate-800">
+                            <span className="font-bold text-[#ECE5D8] text-xs">
                               {capacity.count} / {capacity.max}
                             </span>
-                            <div className="w-20 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                            <div className="w-20 h-1.5 bg-[#1f1f1f] rounded-full overflow-hidden border border-white/5">
                               <div
-                                className="h-full bg-indigo-600 rounded-full"
+                                className="h-full bg-[#ECE5D8] rounded-full"
                                 style={{ width: `${capacity.percentage}%` }}
                               />
                             </div>
@@ -179,11 +179,11 @@ export function AdminEvents() {
 
                         {/* Actions */}
                         <td className="px-6 py-4 text-right whitespace-nowrap">
-                          <div className="flex items-center justify-end gap-1.5">
+                          <div className="flex items-center justify-end gap-1">
                             <Link
                               to={`/events/${evt.id}`}
                               target="_blank"
-                              className="p-2 rounded-lg text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 transition-colors"
+                              className="p-2 rounded-xl text-[#A69E8C] hover:text-[#F6F3EC] hover:bg-white/5 transition-colors"
                               title="View Public Page"
                             >
                               <Eye className="w-4 h-4" />
@@ -191,7 +191,7 @@ export function AdminEvents() {
 
                             <Link
                               to={`/admin/events/edit/${evt.id}`}
-                              className="p-2 rounded-lg text-slate-400 hover:text-amber-600 hover:bg-amber-50 transition-colors"
+                              className="p-2 rounded-xl text-[#A69E8C] hover:text-amber-300 hover:bg-amber-500/10 transition-colors"
                               title="Edit Event"
                             >
                               <Edit2 className="w-4 h-4" />
@@ -200,7 +200,7 @@ export function AdminEvents() {
                             <button
                               type="button"
                               onClick={() => setDeleteTarget(evt)}
-                              className="p-2 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-colors"
+                              className="p-2 rounded-xl text-[#A69E8C] hover:text-rose-400 hover:bg-rose-500/10 transition-colors"
                               title="Delete Event"
                             >
                               <Trash2 className="w-4 h-4" />
@@ -214,9 +214,9 @@ export function AdminEvents() {
               </table>
             </div>
           ) : (
-            <div className="p-12 text-center text-xs text-slate-500 space-y-2">
-              <Calendar className="w-8 h-8 text-slate-300 mx-auto" />
-              <p className="font-semibold text-slate-700">No events found matching search criteria.</p>
+            <div className="p-12 text-center text-xs font-mono text-[#A69E8C] space-y-2">
+              <Calendar className="w-8 h-8 text-[#A69E8C]/40 mx-auto" />
+              <p className="font-bold text-[#ECE5D8]">No events found matching search criteria.</p>
             </div>
           )}
         </div>
